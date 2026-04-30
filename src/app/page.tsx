@@ -1,12 +1,69 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { client } from '../lib/sanity.client';
+
+type PortfolioItem = {
+  title: string;
+  imageUrl: string | null;
+  tags: string[];
+  url: string | null;
+};
 
 const heroBgDesktop = "https://www.figma.com/api/mcp/asset/f61fc9ea-23b2-4c3a-9b4a-3de1ae7fe4a6";
 const heroBgMobile  = "https://www.figma.com/api/mcp/asset/0c8a6639-7cab-4b38-9777-e38f5a76f68c";
 
+const Arrow = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path d="M9 23L23 9M23 9H13M23 9V19" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+function ProjectCard({ project, size }: { project: PortfolioItem; size: 'tall' | 'short' }) {
+  const href = project.url || '#';
+  return (
+    <div className="work__project">
+      <div className={`work__card work__card--${size}`}>
+        {project.imageUrl && (
+          <img
+            src={`${project.imageUrl}?w=900&auto=format&fit=crop`}
+            alt={project.title}
+            loading="lazy"
+          />
+        )}
+        <div className="work__tags">
+          {(project.tags || []).map(tag => (
+            <span key={tag} className="work__tag">{tag}</span>
+          ))}
+        </div>
+      </div>
+      <div className="work__proj-foot">
+        <p className="work__proj-name">{project.title}</p>
+        <a href={href} className="work__arrow" aria-label={`View ${project.title}`}>
+          <Arrow />
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [projects, setProjects] = useState<PortfolioItem[]>([]);
+
+  useEffect(() => {
+    client
+      .fetch<PortfolioItem[]>(
+        `*[_type == "portfolio" && featured == true] | order(order asc) {
+          title,
+          "imageUrl": image.asset->url,
+          tags,
+          url
+        }[0...4]`
+      )
+      .then(setProjects)
+      .catch(console.error);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? 'hidden' : '';
@@ -257,43 +314,9 @@ export default function Home() {
         <div className="work__grid">
 
           <div className="work__col work__col--l">
-
-            <div className="work__project">
-              <div className="work__card work__card--tall">
-                <img src="https://www.figma.com/api/mcp/asset/874d3a7a-e5f9-4d7f-85ea-73806e7bddf4" alt="Surfers Paradise" />
-                <div className="work__tags">
-                  <span className="work__tag">Social Media</span>
-                  <span className="work__tag">Photography</span>
-                </div>
-              </div>
-              <div className="work__proj-foot">
-                <p className="work__proj-name">Surfers Paradise</p>
-                <span className="work__arrow" aria-hidden="true">
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <path d="M9 23L23 9M23 9H13M23 9V19" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </div>
-            </div>
-
-            <div className="work__project">
-              <div className="work__card work__card--short">
-                <img src="https://www.figma.com/api/mcp/asset/571c7560-ae5d-4ffb-a822-2ec403d7a33c" alt="Cyberpunk Caffe" />
-                <div className="work__tags">
-                  <span className="work__tag">Social Media</span>
-                  <span className="work__tag">Photography</span>
-                </div>
-              </div>
-              <div className="work__proj-foot">
-                <p className="work__proj-name">Cyberpunk Caffe</p>
-                <span className="work__arrow" aria-hidden="true">
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <path d="M9 23L23 9M23 9H13M23 9V19" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </div>
-            </div>
-
+            {projects.slice(0, 2).map((p, i) => (
+              <ProjectCard key={p.title} project={p} size={i === 0 ? 'tall' : 'short'} />
+            ))}
             <div className="work__cta work__cta--desk">
               <div className="about__bkts about__bkts--l">
                 <span className="about__corner about__corner--tl"></span>
@@ -308,47 +331,12 @@ export default function Home() {
                 <span className="about__corner about__corner--br"></span>
               </div>
             </div>
-
           </div>
 
           <div className="work__col work__col--r">
-
-            <div className="work__project">
-              <div className="work__card work__card--short">
-                <img src="https://www.figma.com/api/mcp/asset/6459d552-a4e7-4abe-b1e6-ef2e620a4299" alt="Agency 976" />
-                <div className="work__tags">
-                  <span className="work__tag">Social Media</span>
-                  <span className="work__tag">Photography</span>
-                </div>
-              </div>
-              <div className="work__proj-foot">
-                <p className="work__proj-name">Agency 976</p>
-                <span className="work__arrow" aria-hidden="true">
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <path d="M9 23L23 9M23 9H13M23 9V19" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </div>
-            </div>
-
-            <div className="work__project">
-              <div className="work__card work__card--tall">
-                <img src="https://www.figma.com/api/mcp/asset/b0811e3f-4e0c-4413-a27e-05d11147140f" alt="Minimal Playground" />
-                <div className="work__tags">
-                  <span className="work__tag">Social Media</span>
-                  <span className="work__tag">Photography</span>
-                </div>
-              </div>
-              <div className="work__proj-foot">
-                <p className="work__proj-name">Minimal Playground</p>
-                <span className="work__arrow" aria-hidden="true">
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <path d="M9 23L23 9M23 9H13M23 9V19" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </div>
-            </div>
-
+            {projects.slice(2, 4).map((p, i) => (
+              <ProjectCard key={p.title} project={p} size={i === 0 ? 'short' : 'tall'} />
+            ))}
           </div>
 
         </div>
