@@ -72,7 +72,7 @@ export const portfolio = defineType({
       media: 'image',
       subtitle: 'order',
     },
-    prepare({title, media, subtitle}: {title: string; media: unknown; subtitle: number}) {
+    prepare({title, media, subtitle}) {
       return {
         title,
         media,
