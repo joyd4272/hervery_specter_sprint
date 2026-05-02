@@ -1183,10 +1183,13 @@ body {
     width: 100%;
     gap: 16px;
     overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: #000 transparent;
+    padding-bottom: 12px;
   }
-  .news__grid::-webkit-scrollbar { display: none; }
+  .news__grid::-webkit-scrollbar { height: 4px; }
+  .news__grid::-webkit-scrollbar-track { background: transparent; }
+  .news__grid::-webkit-scrollbar-thumb { background: #000; border-radius: 2px; }
 
   .news__card {
     width: 300px;
