@@ -191,6 +191,12 @@ body {
 .name-break { display: none; }
 .name-gap   { display: inline; }
 
+.hero__name-harvey,
+.hero__name-specter {
+  display: inline-block;
+  will-change: transform;
+}
+
 .hero__bottom {
   display: flex;
   justify-content: flex-end;

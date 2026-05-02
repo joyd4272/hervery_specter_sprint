@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { client } from '../lib/sanity.client';
 
 type PortfolioItem = {
@@ -80,6 +81,30 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (window.innerWidth <= 768) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
+
+    tl.to(['.hero__name-harvey', '.hero__label'], { x: '-55vw', ease: 'none' }, 0)
+      .to('.hero__name-specter',                  { x:  '55vw', ease: 'none' }, 0)
+      .to('.hero__bg',  { scale: 1.2, transformOrigin: 'center center', ease: 'none' }, 0);
+
+    return () => {
+      tl.scrollTrigger?.kill();
+      tl.kill();
+      gsap.set(['.hero__name-harvey', '.hero__name-specter', '.hero__label', '.hero__bg'], { clearProps: 'all' });
+    };
+  }, []);
+
+  useEffect(() => {
     const buttons = document.querySelectorAll<HTMLElement>('.btn, .btn--outline');
     const cleanups: (() => void)[] = [];
 
@@ -142,7 +167,12 @@ export default function Home() {
           <div className="hero__content">
             <div className="hero__name-block">
               <span className="hero__label">[ Hello I&apos;m ]</span>
-              <h1 className="hero__name">Harvey<span className="name-gap">&nbsp;&nbsp;&nbsp;</span><br className="name-break" />Specter</h1>
+              <h1 className="hero__name">
+                <span className="hero__name-harvey">Harvey</span>
+                <span className="name-gap">&nbsp;&nbsp;&nbsp;</span>
+                <br className="name-break" />
+                <span className="hero__name-specter">Specter</span>
+              </h1>
             </div>
 
             <div className="hero__bottom">
