@@ -131,6 +131,32 @@ export default function Home() {
 
   return (
     <>
+      <nav className="nav" aria-label="Main navigation">
+        <a href="#" className="nav__logo">H.Studio</a>
+
+        <ul className="nav__links" role="list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <a href="#contact" className="btn nav__cta-desktop">Let&apos;s talk</a>
+
+        <button
+          className="nav__hamburger"
+          aria-label="Open navigation"
+          aria-expanded={drawerOpen}
+          aria-controls="mobile-drawer"
+          onClick={() => setDrawerOpen(true)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
       <section className="hero">
         <div className="hero__bg">
           <img src={heroBgDesktop} alt="Harvey Specter" />
@@ -138,32 +164,6 @@ export default function Home() {
         <div className="hero__frost"></div>
 
         <div className="hero__inner">
-          <nav className="nav" aria-label="Main navigation">
-            <a href="#" className="nav__logo">H.Studio</a>
-
-            <ul className="nav__links" role="list">
-              <li><a href="#about">About</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#news">News</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-
-            <a href="#contact" className="btn nav__cta-desktop">Let&apos;s talk</a>
-
-            <button
-              className="nav__hamburger"
-              aria-label="Open navigation"
-              aria-expanded={drawerOpen}
-              aria-controls="mobile-drawer"
-              onClick={() => setDrawerOpen(true)}
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          </nav>
-
           <div className="hero__content">
             <div className="hero__name-block">
               <span className="hero__label">[ Hello I&apos;m ]</span>
