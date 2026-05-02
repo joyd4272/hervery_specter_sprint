@@ -365,7 +365,7 @@ export default function Home() {
 
           <div className="testi__card testi__card--1">
             <img className="testi__card-logo"
-              src="https://www.figma.com/api/mcp/asset/25e190db-1890-41be-b46c-3f22838a3d13"
+              src="https://www.figma.com/api/mcp/asset/f0304105-752e-45b3-8878-95be46c3474a"
               alt="Logoidsum" />
             <p className="testi__card-quote">A brilliant creative partner who transformed our vision into a unique, high-impact brand identity. Their ability to craft everything from custom mascots to polished logos is truly impressive.</p>
             <p className="testi__card-author">Marko Stojković</p>
@@ -373,7 +373,7 @@ export default function Home() {
 
           <div className="testi__card testi__card--2">
             <img className="testi__card-logo"
-              src="https://www.figma.com/api/mcp/asset/b88d807e-5c50-4c36-878f-08154e6a1167"
+              src="https://www.figma.com/api/mcp/asset/da00d501-904d-427e-ba95-96078696ff8e"
               alt="Logoidsum" />
             <p className="testi__card-quote">Professional, precise, and incredibly fast at handling complex product visualizations and templates.</p>
             <p className="testi__card-author">Lukas Weber</p>
@@ -381,7 +381,7 @@ export default function Home() {
 
           <div className="testi__card testi__card--3">
             <img className="testi__card-logo"
-              src="https://www.figma.com/api/mcp/asset/8b64a487-10af-4448-a8f0-713d25085803"
+              src="https://www.figma.com/api/mcp/asset/12d69647-04a5-499d-b468-f3d0f7d650ca"
               alt="Logoidsum University" />
             <p className="testi__card-quote">A strategic partner who balances stunning aesthetics with high-performance UX for complex platforms. They don&apos;t just make things look good; they solve business problems through visual clarity.</p>
             <p className="testi__card-author">Sarah Jenkins</p>
@@ -389,7 +389,7 @@ export default function Home() {
 
           <div className="testi__card testi__card--4">
             <img className="testi__card-logo"
-              src="https://www.figma.com/api/mcp/asset/9f27b615-8cbe-4b1c-b943-882a3f6b280a"
+              src="https://www.figma.com/api/mcp/asset/0ea0a055-618f-4c25-92c9-442aee834159"
               alt="Logoidsum" />
             <p className="testi__card-quote">An incredibly versatile designer who delivers consistent quality across a wide range of styles and formats.</p>
             <p className="testi__card-author">Sofia Martínez</p>
