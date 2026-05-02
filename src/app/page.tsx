@@ -10,8 +10,8 @@ type PortfolioItem = {
   url: string | null;
 };
 
-const heroBgDesktop = "https://www.figma.com/api/mcp/asset/f61fc9ea-23b2-4c3a-9b4a-3de1ae7fe4a6";
-const heroBgMobile  = "https://www.figma.com/api/mcp/asset/0c8a6639-7cab-4b38-9777-e38f5a76f68c";
+const heroBgDesktop = "https://www.figma.com/api/mcp/asset/cefb3b04-a321-4b6b-a4d8-c72642251952";
+const heroBgMobile  = "https://www.figma.com/api/mcp/asset/be5f3fad-df87-4c13-bdde-c4cd31670f0e";
 
 const Arrow = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none">

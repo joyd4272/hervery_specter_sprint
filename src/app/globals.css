@@ -34,7 +34,7 @@ body {
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: 50% 20%;
+  object-position: center 15%;
 }
 
 .hero__frost {
@@ -262,7 +262,7 @@ body {
   }
 
   .hero__bg img {
-    object-position: 38% center;
+    object-position: center center;
   }
 
   .hero__frost {
