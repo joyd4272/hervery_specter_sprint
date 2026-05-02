@@ -11,7 +11,7 @@ type PortfolioItem = {
 };
 
 const heroBgDesktop = "/harvey-hero.png";
-const heroBgMobile  = "https://www.figma.com/api/mcp/asset/be5f3fad-df87-4c13-bdde-c4cd31670f0e";
+const heroBgMobile  = "/harvey-hero.png";
 
 const Arrow = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
