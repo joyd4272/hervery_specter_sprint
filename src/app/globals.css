@@ -20,8 +20,8 @@ body {
   position: absolute;
   left: -34.79%;
   right: -34.79%;
-  height: 1346px;
-  top: calc(50% + 88.84px);
+  aspect-ratio: 2291 / 1346;
+  top: calc(50% + 29.3vw - 333.5px);
   transform: translateY(-50%);
   pointer-events: none;
 }
@@ -34,7 +34,7 @@ body {
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: bottom;
 }
 
 .hero__frost {
@@ -256,6 +256,7 @@ body {
   .hero__bg {
     left: 0;
     right: -39.47%;
+    aspect-ratio: auto;
     height: 847px;
     top: 50%;
     transform: translateY(-50%);
