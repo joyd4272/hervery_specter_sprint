@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { gsap } from 'gsap';
 import { client } from '../lib/sanity.client';
 
 type PortfolioItem = {
@@ -76,6 +77,31 @@ export default function Home() {
     };
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
+  }, []);
+
+  useEffect(() => {
+    const buttons = document.querySelectorAll<HTMLElement>('.btn, .btn--outline');
+    const cleanups: (() => void)[] = [];
+
+    buttons.forEach((el) => {
+      const onMove = (e: MouseEvent) => {
+        const rect = el.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width  / 2) * 0.35;
+        const y = (e.clientY - rect.top  - rect.height / 2) * 0.35;
+        gsap.to(el, { x, y, duration: 0.3, ease: 'power2.out', overwrite: true });
+      };
+      const onLeave = () => {
+        gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)', overwrite: true });
+      };
+      el.addEventListener('mousemove', onMove);
+      el.addEventListener('mouseleave', onLeave);
+      cleanups.push(() => {
+        el.removeEventListener('mousemove', onMove);
+        el.removeEventListener('mouseleave', onLeave);
+      });
+    });
+
+    return () => cleanups.forEach(fn => fn());
   }, []);
 
   return (
