@@ -10,7 +10,7 @@ type PortfolioItem = {
   url: string | null;
 };
 
-const heroBgDesktop = "https://www.figma.com/api/mcp/asset/052b47a1-6929-4937-bf4d-ba137bd636bc";
+const heroBgDesktop = "/harvey-hero.png";
 const heroBgMobile  = "https://www.figma.com/api/mcp/asset/be5f3fad-df87-4c13-bdde-c4cd31670f0e";
 
 const Arrow = () => (
