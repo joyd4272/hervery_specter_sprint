@@ -15,7 +15,7 @@ const heroBgMobile  = "/harvey-hero.png";
 
 const Arrow = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-    <path d="M9 23L23 9M23 9H13M23 9V19" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M9 23L23 9M23 9H13M23 9V19" stroke="#000" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
