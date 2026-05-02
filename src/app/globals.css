@@ -181,7 +181,6 @@ body {
   letter-spacing: -0.07em;
   line-height: 1.1;
   color: #fff;
-  mix-blend-mode: overlay;
   text-transform: capitalize;
   text-align: center;
   width: 100%;
@@ -195,6 +194,7 @@ body {
 .hero__name-specter {
   display: inline-block;
   will-change: transform;
+  mix-blend-mode: overlay;
 }
 
 .hero__bottom {
