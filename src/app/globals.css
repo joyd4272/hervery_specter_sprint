@@ -1032,12 +1032,16 @@ body {
     inset: auto;
     width: 100%;
     display: flex;
+    gap: 12px;
     overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: #000 transparent;
+    padding-bottom: 12px;
     pointer-events: all;
   }
-  .testi__cards::-webkit-scrollbar { display: none; }
+  .testi__cards::-webkit-scrollbar { height: 4px; }
+  .testi__cards::-webkit-scrollbar-track { background: transparent; }
+  .testi__cards::-webkit-scrollbar-thumb { background: #000; border-radius: 2px; }
 
   .testi__card {
     position: relative;
@@ -1045,13 +1049,14 @@ body {
     left: auto;
     width: 260px;
     flex-shrink: 0;
+    transform: none;
   }
 
   .testi__card--2,
-  .testi__card--3 { display: none; }
+  .testi__card--3 { display: flex; }
 
-  .testi__card--1 { transform: rotate(-3.5deg); margin-right: -10px; z-index: 1; }
-  .testi__card--4 { transform: rotate(2deg); }
+  .testi__card--1 { transform: none; margin-right: 0; z-index: auto; }
+  .testi__card--4 { transform: none; }
 }
 
 /* ─── NEWS ───────────────────────────────────────── */
