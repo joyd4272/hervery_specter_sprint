@@ -292,7 +292,7 @@ body {
   .name-break { display: block; }
   .name-gap   { display: none; }
 
-  .hero__bottom { justify-content: flex-start; }
+  .hero__bottom { justify-content: center; }
 
   .hero__desc-block {
     width: 100%;
